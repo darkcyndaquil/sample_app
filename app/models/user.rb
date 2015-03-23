@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   before_save { self.email = email.downcase! }
+
+  before_save { self.email = email.downcase }
+
   #validates the presence of a name attribute
   validates :name, presence: true, length: {maximum: 50 }
   VALID_EMAIL_REGEX =/\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
