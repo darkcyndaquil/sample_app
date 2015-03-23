@@ -13,6 +13,7 @@ end
 group :test do
 	gem 'selenium-webdriver','2.35.1'
 	gem 'capybara', '2.1.0'
+	gem 'factory_girl_rails', '4.2.0'
 end
 
 
@@ -31,7 +32,7 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
