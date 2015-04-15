@@ -17,8 +17,8 @@ describe User do
   #confirmation of password
   it{should respond_to (:password)}
   it{should respond_to (:password_confirmation)}  
-  
   #authentication during login
+  it{ should respond_to(:remember_token)}
   it {should respond_to (:authenticate)}
   
   
@@ -107,4 +107,9 @@ describe User do
 	end
   end
   
+  describe "remember token" do
+    before {@user.save}
+	its(:remember_token) { should_not be_blank}
+  end
+    
 end

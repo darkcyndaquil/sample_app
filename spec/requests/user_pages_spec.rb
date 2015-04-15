@@ -32,15 +32,25 @@ describe "User pages" do
 	  it "should create a user" do
 	    expect { click_button submit}.to change(User, :count).by(1)
 	  end
+	  
+	  describe "after saving the user" do
+	    before { click_button submit}
+		let(:user) {User.where(email: 'user@example.com').first}
+		
+		it {should have_link('Sign out')}
+		it {should have_title(user.name)}
+		it {should have_selector('div.alert.alert-success', text: 'Welcome')}
+	  end
+	  
 	end
   end
   
   #tests the user show page -model object so that the code has something to find
   describe "profile page" do
-   let(:user) { FactoryGirl.create(:user)}   
-   before { visit user_path(user)}
+    let(:user) { FactoryGirl.create(:user)}   
+    before { visit user_path(user)}
 	
-	it {should have_content(user.name)}
+    it {should have_content(user.name)}
 	it {should have_title(user.name)}
   end
   
